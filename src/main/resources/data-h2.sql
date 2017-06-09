@@ -2,17 +2,18 @@
 INSERT INTO investir.usuario(id, data_nasc, email, celular, nome, tipo_usuario) VALUES
 ( 1, '1970-03-28', 'james@hotmail.com', 	'(51)99235-4186', 'James Mauricio Tremea', 		'ADMINISTRADOR'),
 ( 2, '1990-12-26', 'fernando@yahoo.com.br',	'(51)99123-4567', 'Fernando B. Sturzbecher', 	'LIMITADO'),
-( 3, '1980-11-01', 'ricardo@gmail.com', 	'(51)99234-5678', 'José Ricardo Robaski', 		'PREMIUM');
+( 3, '1980-11-01', 'ricardo@gmail.com', 	'(51)99234-5678', 'José Ricardo Robaski', 		'PREMIUM'),
+( 4, '1960-05-31', 'antonio@gmail.com', 	'(51)99990-1234', 'Antônio Antonildo da Silva', 'PREMIUM');
 
 
---ROLES
+--ROLE
 insert into investir.role(id, role) values
 (1, 'ROLE_ADMINISTRADOR'),
 (2, 'ROLE_LIMITADO'),
 (3, 'ROLE_PREMIUM');
 
 
--- TIPO_ATIVO--
+-- TIPO_ATIVO
 INSERT INTO investir.tipo_ativo(id, desc) VALUES
 (1, 	'Ação'),
 (2, 	'Opção'),
@@ -23,7 +24,7 @@ INSERT INTO investir.tipo_ativo(id, desc) VALUES
 (7, 	'Futuro');
 
 
--- ATIVO --
+-- ATIVO
 INSERT INTO investir.ativo(id, descricao, ticker, vencimento, strike, tipo_ativo_id) VALUES
 (  1,	'Petrobras ON',		'PETR3',	'9999-12-31',	0,		1),
 (  2,	'Petrobras PN',		'PETR4',	'9999-12-31',	0,		1),
@@ -47,7 +48,7 @@ INSERT INTO investir.ativo(id, descricao, ticker, vencimento, strike, tipo_ativo
 ( 20,	'XP Corp Macae',	'XPCM11',	'9999-12-31',	0,		3);
 
 
--- NOTA --
+-- NOTA
 INSERT INTO investir.nota(id, numero, corretora, data_exec, data_liq, corretagem, emolumentos, taxas, irrf) VALUES
 (  1,	222222,	'XP Investimentos',	'2017-01-17',	'2017-01-20',	137.45,	2.35,	1.56,	0.45),
 (  2,	222225,	'XP Investimentos',	'2017-01-19',	'2017-01-23',	89.45,	1.38,	0.76,	0.40),
@@ -55,12 +56,12 @@ INSERT INTO investir.nota(id, numero, corretora, data_exec, data_liq, corretagem
 (  4,	123002,	'Ágora',			'2017-01-31',	'2017-02-03',	209.65,	12.33,	2.05,	2.77);
 
 
--- CARTEIRA--
+-- CARTEIRA
 INSERT INTO investir.carteira(id, usuario_id, data_ref, cred_irrf, prej_normal, prej_daytrade, prej_fii, ultima_atualizacao) VALUES
 ( 1,	2,	'2016-10-20',	1.35,	245.33,		0,		225.45,		'2017-01-12');
 
 
--- ATIVO_CARTEIRA--
+-- ATIVO_CARTEIRA
 INSERT INTO investir.ativo_carteira(id, ativo_id, carteira_id, quantidade, preco_medio) VALUES
 ( 1,	2,	1,	800,	12.33),
 ( 2,	4,	1,	500,	15.77),
@@ -69,7 +70,7 @@ INSERT INTO investir.ativo_carteira(id, ativo_id, carteira_id, quantidade, preco
 ( 5,	19,	1,	300,	62.93);
 
 
--- ATIVO_NOTA--
+-- ATIVO_NOTA
 INSERT INTO investir.ativo_nota(id, nota_id, ativo_id, operacao, quantidade, ajuste) VALUES
 ( 1,	1,	1,	1,	100,	12.00),
 ( 2,	1,	2,	2,	500,	13.22),

@@ -11,7 +11,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
 
-    <title>InvestIR - Amanse o leão</title>
+    <title th:text="#{title.app}"></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
@@ -254,7 +254,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
+                      <!--   <li class="sidebar-search">
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="buscar..."/>
                                 <span class="input-group-btn">
@@ -263,34 +263,63 @@
                                 </button>
                             </span>
                             </div>
-                            <!-- /input-group -->
-                        </li>
+                            /input-group
+                        </li> -->
                         <li>
-                            <a href="home.html"><i class="fa fa-dashboard fa-fw"></i> Página Inicial</a>
+                        	<a href="home.html">
+                        		<i class="fa fa-home fa-fw"></i>
+                        		<span th:text="#{menu.start}"/>
+                        	</a>
                         </li>
-                        <li>
+                        
+              <!--           <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Gráficos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Carteira</a>
+                                    <a href="graficoCarteira.html" th:text="#{menu.start}">Carteira</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Impostos</a>
+                                    <a href="graficoImpostos.html">Impostos</a>
+                                </li>
+                            </ul>
+                            /.nav-second-level
+                        </li> 
+               -->
+               
+                        <li>
+                            <a href="#">
+                            	<i class="fa fa-list-alt fa-fw"></i>
+                            	<span th:text="#{menu.wallet}"></span>
+                            	<span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                         
+                            	<li>
+                                    <a href="carteira.html" th:text="#{wallet.title}"></a>
+                                </li>
+                                <li>
+                                    <a href="carteiraInicial.html" th:text="#{menu.wallet.start}"></a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="carteira.html"><i class="fa fa-table fa-fw"></i> Carteira</a>
+                            <a href="notas.html">
+                            	<i class="fa fa-file-text fa-fw"></i>
+                            	<span th:text="#{menu.notes}"></span>
+                            </a>
                         </li>
 
-                        <li>
-                            <a href="notas.html"><i class="fa fa-table fa-fw"></i> Notas</a>
+						<li>
+                            <a href="mensagens.html">
+                            	<i class="fa fa-envelope-o fa-fw"></i>
+                            	<span th:text="#{menu.messages}"></span>
+                            </a>
                         </li>
-
+						
 
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Resumo<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-check  fa-fw"></i><span th:text="#{menu.summary}"></span><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="#"> Anual</a>

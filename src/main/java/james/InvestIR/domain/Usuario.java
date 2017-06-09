@@ -2,11 +2,14 @@ package james.InvestIR.domain;
 
 import java.util.Date;
 
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+
+/**
+ * created by james on 27_05_2017
+*/
 
 @Entity
 @Inheritance

@@ -11,16 +11,16 @@ public class Role {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private int id;
 	private String role;
 	@ManyToMany
 	private Set<Account> accounts;
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
