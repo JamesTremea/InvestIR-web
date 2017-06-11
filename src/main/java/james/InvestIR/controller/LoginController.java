@@ -11,9 +11,4 @@ public class LoginController {
 		return "login";
 	}
 
-	@GetMapping("/international")
-    public String getInternationalPage() {
-        return "international";
-    }
-	
 }

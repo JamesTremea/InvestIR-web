@@ -26,12 +26,12 @@ INSERT INTO investir.tipo_ativo(id, desc) VALUES
 
 -- ATIVO
 INSERT INTO investir.ativo(id, descricao, ticker, vencimento, strike, tipo_ativo_id) VALUES
-(  1,	'Petrobras ON',		'PETR3',	'9999-12-31',	0,		1),
-(  2,	'Petrobras PN',		'PETR4',	'9999-12-31',	0,		1),
-(  3,	'Vale ON',			'VALE4',	'9999-12-31',	0,		1),
-(  4,	'Vale PN',			'VALE5',	'9999-12-31',	0,		1),
-(  5,	'Estacio ON',		'ESTC3',	'9999-12-31',	0,		1),
-(  6,	'Estacio PN',		'ESTC4',	'9999-12-31',	0,		1),
+(  1,	'Petrobras ON',		'PETR3',	null,			0,		1),
+(  2,	'Petrobras PN',		'PETR4',	null,			0,		1),
+(  3,	'Vale ON',			'VALE4',	null,			0,		1),
+(  4,	'Vale PN',			'VALE5',	null,			0,		1),
+(  5,	'Estacio ON',		'ESTC3',	null,			0,		1),
+(  6,	'Estacio PN',		'ESTC4',	null,			0,		1),
 (  7,	'Petrobras ON',		'PETRF25',	'2017-06-19',	25.00,	2),
 (  8,	'Petrobras ON',		'PETRF3',	'2017-06-19',	15.50,	2),
 (  9,	'Petrobras ON',		'PETRG50',	'2017-07-17',	19.00,	2),
@@ -40,12 +40,12 @@ INSERT INTO investir.ativo(id, descricao, ticker, vencimento, strike, tipo_ativo
 ( 12,	'Ambev ON',			'ABEVF3',	'2017-06-19',	22.45,	2),
 ( 13,	'Ambev ON',			'ABEVG46',	'2017-07-17',	16.95,	2),
 ( 14,	'Ambev ON',			'ABEVG47E',	'2017-07-17',	23.70,	2),
-( 15,	'XP Gaia',			'XPGA11',	'9999-12-31',	0,		3),
-( 16,	'FII Rio Negro',	'RNGO11',	'9999-12-31',	0,		3),
-( 17,	'General Shopping',	'FIGS11',	'9999-12-31',	0,		3),
-( 18,	'FII Rio Bravo',	'RBVO11',	'9999-12-31',	0,		3),
-( 19,	'Santander Agenc',	'SAAG11',	'9999-12-31',	0,		3),
-( 20,	'XP Corp Macae',	'XPCM11',	'9999-12-31',	0,		3);
+( 15,	'XP Gaia',			'XPGA11',	null,			0,		3),
+( 16,	'FII Rio Negro',	'RNGO11',	null,			0,		3),
+( 17,	'General Shopping',	'FIGS11',	null,			0,		3),
+( 18,	'FII Rio Bravo',	'RBVO11',	null,			0,		3),
+( 19,	'Santander Agenc',	'SAAG11',	null,			0,		3),
+( 20,	'XP Corp Macae',	'XPCM11',	'2017-07-17',	0,		3);
 
 
 -- NOTA
@@ -67,7 +67,9 @@ INSERT INTO investir.ativo_carteira(id, ativo_id, carteira_id, quantidade, preco
 ( 2,	4,	1,	500,	15.77),
 ( 3,	16,	1,	200,	80.22),
 ( 4,	17,	1,	100,	92.34),
-( 5,	19,	1,	300,	62.93);
+( 5,	19,	1,	300,	62.93),
+( 6,	7,	1,	2000,	2.93),
+( 7,	11,	1,	3000,	0.47);
 
 
 -- ATIVO_NOTA

@@ -18,6 +18,7 @@ public class Ativo {
 	private String descricao;
 	private String ticker;
 	private double strike;
+
 	private Date vencimento;
 
 	public Ativo(){

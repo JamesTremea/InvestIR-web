@@ -1,7 +1,12 @@
 package james.InvestIR.repository;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import james.InvestIR.domain.Account;
 import james.InvestIR.domain.AtivoCarteira;
 
 /**
@@ -10,5 +15,8 @@ import james.InvestIR.domain.AtivoCarteira;
 
 @Repository
 public interface AtivoCarteiraRepository extends JpaRepository<AtivoCarteira, Long> {
+
+//	Optional<Account> findByUsername(String username);
+	List<AtivoCarteira> findByCarteiraId(Long carteiraId);
 
 }

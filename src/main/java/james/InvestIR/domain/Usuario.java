@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+import javax.persistence.OneToOne;
 
 /**
  * created by james on 27_05_2017
@@ -24,7 +25,8 @@ public class Usuario {
 	private String celular;
 	private String tipoUsuario;
 	private Date dataNasc;
-
+	@OneToOne
+	private Carteira carteira;
 
 	public Usuario(){
 
@@ -79,6 +81,14 @@ public class Usuario {
 
 	public void setDataNasc(Date dataNasc) {
 		this.dataNasc = dataNasc;
+	}
+
+	public Carteira getCarteira() {
+		return carteira;
+	}
+
+	public void setCarteira(Carteira carteira) {
+		this.carteira = carteira;
 	}
 
 }

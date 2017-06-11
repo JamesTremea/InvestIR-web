@@ -11,15 +11,11 @@ public class HomeController {
 		return "/layouts/home";
 	}
 
-	@GetMapping("/carteira")
-	public String getWalletPage(){
-		return "/carteira/carteira";
-	}
 
 	@GetMapping("/notas")
 	public String getNotesPage(){
 		return "/notas/notas";
 	}
 
-	
+
 }
