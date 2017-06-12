@@ -62,23 +62,23 @@ INSERT INTO investir.carteira(id, usuario_id, data_ref, cred_irrf, prej_normal, 
 
 
 -- ATIVO_CARTEIRA
-INSERT INTO investir.ativo_carteira(id, ativo_id, carteira_id, quantidade, preco_medio) VALUES
-( 1,	2,	1,	800,	12.33),
-( 2,	4,	1,	500,	15.77),
-( 3,	16,	1,	200,	80.22),
-( 4,	17,	1,	100,	92.34),
-( 5,	19,	1,	300,	62.93),
-( 6,	7,	1,	2000,	2.93),
-( 7,	11,	1,	3000,	0.47);
+INSERT INTO investir.ativo_carteira(id, ativo_id, carteira_id, quantidade, valor) VALUES
+( 1,	2,	1,	800,	9864.00),
+( 2,	4,	1,	500,	7885.00),
+( 3,	16,	1,	200,	16044.00),
+( 4,	17,	1,	100,	9234.00),
+( 5,	19,	1,	300,	18879.00),
+( 6,	7,	1,	2000,	5860.00),
+( 7,	11,	1,	3000,	1410.00);
 
 
 -- ATIVO_NOTA
-INSERT INTO investir.ativo_nota(id, nota_id, ativo_id, operacao, quantidade, ajuste) VALUES
-( 1,	1,	1,	1,	100,	12.00),
-( 2,	1,	2,	2,	500,	13.22),
-( 3,	1,	4,	0,	200,	14.55),
-( 4,	2,	1,	2,	100,	93.00),
-( 5,	2,	1,	1,	200,	60.93);
+INSERT INTO investir.ativo_nota(id, nota_id, ativo_id, operacao, quantidade, valor) VALUES
+( 1,	1,	1,	1,	100,	1200.00),
+( 2,	1,	2,	2,	500,	6610.00),
+( 3,	1,	4,	0,	200,	2910.00),
+( 4,	2,	1,	2,	100,	9300.00),
+( 5,	2,	1,	1,	200,	12186.00);
 
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" layout:decorator="/layouts/main">
+<html lang="pt" layout:decorator="/layouts/main">
 
 <head>
 
@@ -21,10 +21,16 @@
 										<div class="row">
 											<div class="form-group col-lg-10">
 												<label id="label_data_ref" th:text="#{wallet.refDate}"></label>
-												<input id="input_data_ref" type="date" class="form-control"
+												<input id="input_data_ref" type="text" class="form-control"
 														th:placeholder="${#dates.format(carteira.dataRef,'dd/MMM/yyyy')}" />
 												<p class="help-block" th:text="#{wallet.refDate.descr}"></p>
 											</div>
+											<!-- <div class="form-group col-lg-8">
+												<label id="label_data_ref" th:text="#{wallet.lastUpdate}"></label>
+												<input id="input_data_ref" type="text" class="form-control"
+													th:value="${#dates.format(carteira.ultimaAtualizacao,'dd/MMM/yyyy')}" />
+
+											</div> -->
 										</div>
 										<div class="row">
 											<div class="form-group col-lg-10">
@@ -108,9 +114,11 @@
 															<span th:text="*{#dates.format(ativo.vencimento,'dd/MMM/yyyy')}">-</span>
 														</div>
 													</td>
-													<td id="form_lista_pr_med" class="center"><span th:text="*{#numbers.formatDecimal((precoMedio), 1, 'POINT', 4, 'COMMA')}">-</span></td>
+													<td id="form_lista_pr_med" class="center">
+														<span th:text="*{#numbers.formatDecimal((valor / quantidade), 1, 'POINT', 4, 'COMMA')}">-</span>
+													</td>
 													<td id="form_lista_valor" class="center">
-														<span th:text="*{#numbers.formatDecimal((precoMedio * quantidade), 1, 'POINT', 2, 'COMMA')}">-</span>
+														<span th:text="*{#numbers.formatDecimal((valor), 1, 'POINT', 2, 'COMMA')}">-</span>
 													</td>
 													<td id="head_lista_botao">
 														<button id="btn_submit_form_2" type="submit" class="btn btn-warning btn-circle">
@@ -129,27 +137,28 @@
 												<div class="form-group">
 													<tr class="odd gradeX">
 														<td class="center"><input class="form-control"
-															id="form_lista_quant" placeholder="0" /></td>
-														<td class="center" id="form_lista_tipo"><select
-															class="form-control">
-																<option>Ação</option>
-																<option>Opção</option>
-																<option>FII</option>
-																<option>Dólar</option>
-																<option>Ouro</option>
-																<option>Futuro</option>
-														</select></td>
-														<td class="center"><input class="form-control"
-															id="form_lista_ticker" type="text" placeholder="ticker" />
+															id="form_lista_quant" th:placeholder="#{placeholder.zero}" /></td>
+														<td class="center" id="form_lista_tipo">
+															<select	class="form-control">
+																	<option>Ação</option>
+																	<option>Opção</option>
+																	<option>FII</option>
+																	<option>Dólar</option>
+																	<option>Ouro</option>
+																	<option>Futuro</option>
+															</select>
 														</td>
 														<td class="center"><input class="form-control"
-															id="form_lista_vcto" type="date" placeholder="01/01/2001" />
+															id="form_lista_ticker" type="text" th:placeholder="#{asset.ticker}" />
 														</td>
 														<td class="center"><input class="form-control"
-															id="form_lista_pr_med" type="text" placeholder="0,00" />
+															id="form_lista_vcto" type="date" th:placeholder="#{placeholder.dateStd}" />
 														</td>
 														<td class="center"><input class="form-control"
-															id="form_lista_valor" type="text" placeholder="0,00" /></td>
+															id="form_lista_pr_med" type="text" th:placeholder="#{placeholder.zeroes}" disabled="true" />
+														</td>
+														<td class="center"><input class="form-control"
+															id="form_lista_valor" type="text" th:placeholder="#{placeholder.zeroes}" /></td>
 														<td>
 															<button id="btn_adiciona_form_1" type="button"
 																class="btn btn-primary btn-circle">

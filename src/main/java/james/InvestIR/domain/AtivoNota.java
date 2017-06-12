@@ -14,7 +14,7 @@ public class AtivoNota {
 	private long id;
 	private EnumOperacao operacao;
 	private int quantidade;
-	private double ajuste;
+	private double valor;
 	@ManyToOne
 	private Ativo ativo;
 	@ManyToOne
@@ -56,12 +56,12 @@ public class AtivoNota {
 		this.operacao = operacao;
 	}
 
-	public double getAjuste() {
-		return ajuste;
+	public double getValor() {
+		return valor;
 	}
 
-	public void setAjuste(double ajuste) {
-		this.ajuste = ajuste;
+	public void setValor(double valor) {
+		this.valor = valor;
 	}
 
 	public Nota getNota() {

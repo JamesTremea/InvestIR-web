@@ -12,16 +12,13 @@ public class AtivoCarteira {
 	@GeneratedValue
 	private long id;
 	private int quantidade;
-	private double precoMedio;
-
+	private double valor;
 	@ManyToOne
 	private Ativo ativo;
-
 	@ManyToOne
 	private Carteira carteira;
 
 	public AtivoCarteira(){
-
 	}
 
 	public long getId() {
@@ -40,12 +37,12 @@ public class AtivoCarteira {
 		this.quantidade = quantidade;
 	}
 
-	public double getPrecoMedio() {
-		return precoMedio;
+	public double getValor() {
+		return valor;
 	}
 
-	public void setPrecoMedio(double precoMedio) {
-		this.precoMedio = precoMedio;
+	public void setValor(double valor) {
+		this.valor = valor;
 	}
 
 	public Ativo getAtivo() {

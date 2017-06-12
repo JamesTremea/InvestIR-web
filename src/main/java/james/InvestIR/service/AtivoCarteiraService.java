@@ -31,17 +31,33 @@ public class AtivoCarteiraService {
 
     public AtivoCarteira registerPurchase(AtivoCarteira ativoCarteira ) {
     	AtivoCarteira ac = ativoCarteiraRepository.findOne(ativoCarteira.getId());
-    	// Calculando o preço médio antes de salvar
-    	double val = ac.getPrecoMedio() * ac.getQuantidade();
-    	ac.setQuantidade(ac.getQuantidade()+ativoCarteira.getQuantidade());
-    	val += (ativoCarteira.getPrecoMedio() * ativoCarteira.getQuantidade());
-    	ac.setPrecoMedio(val / ac.getQuantidade());
-
+    	if (ac == null)
+    		ac = new AtivoCarteira();
+    	// Calculando o novo valor antes de salvar
+    	ac.setQuantidade(ac.getQuantidade() + ativoCarteira.getQuantidade());
+    	double val = ac.getValor() + ativoCarteira.getValor();
+    	ac.setValor(val);
     	ac.setAtivo(ativoCarteira.getAtivo());
     	ac.setCarteira(ativoCarteira.getCarteira());
-
        	ativoCarteiraRepository.save(ac);
+        return ac;
+    }
 
+    public AtivoCarteira registerSale(AtivoCarteira ativoCarteira) {
+    	AtivoCarteira ac = ativoCarteiraRepository.findOne(ativoCarteira.getId());
+    	if (ac == null){																		// venda a descoberto
+    		ac = new AtivoCarteira();
+    		ac.setAtivo(ativoCarteira.getAtivo());
+        	ac.setCarteira(ativoCarteira.getCarteira());
+    		ac.setQuantidade(0 - ativoCarteira.getQuantidade());
+           	ac.setValor(0 - ativoCarteira.getValor());
+    	}else{
+    		// Recalculando valor e quantidade antes de salvar
+    		double val = ac.getValor() - (ativoCarteira.getQuantidade() * (ac.getValor() / ac.getQuantidade()));
+    		ac.setValor(val);
+    		ac.setQuantidade(ac.getQuantidade() - ativoCarteira.getQuantidade());
+     	}
+       	ativoCarteiraRepository.save(ac);
         return ac;
     }
 
