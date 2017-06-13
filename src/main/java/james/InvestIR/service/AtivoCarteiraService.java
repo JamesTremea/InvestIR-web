@@ -15,18 +15,15 @@ import org.springframework.stereotype.Service;
 public class AtivoCarteiraService {
 
     private final AtivoService ativoService;
-    private final CarteiraService carteiraService;
     private final AtivoCarteiraRepository ativoCarteiraRepository;
 
-    public AtivoCarteiraService(AtivoService ativoService, CarteiraService carteiraService
-    		, AtivoCarteiraRepository ativoCarteiraRepository) {
+    public AtivoCarteiraService(AtivoService ativoService, AtivoCarteiraRepository ativoCarteiraRepository) {
         this.ativoService = ativoService;
-        this.carteiraService = carteiraService;
         this.ativoCarteiraRepository = ativoCarteiraRepository;
     }
 
-    public void save(AtivoCarteira ativoCarteira) {
-       	ativoCarteiraRepository.save(ativoCarteira);
+    public AtivoCarteira save(AtivoCarteira ativoCarteira) {
+       	return ativoCarteiraRepository.save(ativoCarteira);
     }
 
     public AtivoCarteira registerPurchase(AtivoCarteira ativoCarteira ) {

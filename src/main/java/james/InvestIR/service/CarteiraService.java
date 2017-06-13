@@ -19,34 +19,27 @@ public class CarteiraService {
 
     private final AtivoService ativoService;
     private final CarteiraRepository carteiraRepository;
-    private final AtivoCarteiraRepository ativoCarteiraRepository;
+    private final AtivoCarteiraService ativoCarteiraService;
 
-    public CarteiraService(AtivoService ativoService, CarteiraRepository carteiraRepository, AtivoCarteiraRepository ativoCarteiraRepository) {
+    public CarteiraService(AtivoService ativoService, CarteiraRepository carteiraRepository, AtivoCarteiraService ativoCarteiraService) {
         this.ativoService = ativoService;
         this.carteiraRepository = carteiraRepository;
-        this.ativoCarteiraRepository = ativoCarteiraRepository;
+        this.ativoCarteiraService = ativoCarteiraService;
     }
 
     public Carteira save(Carteira carteira) {
-    	Carteira cart = carteiraRepository.findOne(carteira.getId());
-
-        if (cart == null){
-            cart = carteiraRepository.save(carteira);
-            for (AtivoCarteira ac : carteira.getAtivosCarteira()){
-            	ativoCarteiraRepository.save(ac);
-            }
-        } else{
-
+    	Carteira cart = carteiraRepository.save(carteira);
+        for (AtivoCarteira ac : carteira.getAtivosCarteira()){
+        	ativoCarteiraService.save(ac);
         }
         return cart;
     }
 
-
     public Carteira findOne(Long id){
     	Carteira cart = carteiraRepository.findOne(id);
-    	List<AtivoCarteira> lac = ativoCarteiraRepository.findByCarteiraId(id);
-    	if(lac.size() > 0)
-    		cart.setAtivosCarteira(lac);
+//    	List<AtivoCarteira> lac = ativoCarteiraService.findByCarteiraId(id);
+//    	if(lac.size() > 0)
+//    		cart.setAtivosCarteira(lac);
     	return cart;
 
     }

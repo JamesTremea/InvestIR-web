@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 */
 
 @Entity
-@Inheritance
+//@Inheritance
 //@DiscriminatorColumn(name = "TYPE")
 public class Usuario {
 

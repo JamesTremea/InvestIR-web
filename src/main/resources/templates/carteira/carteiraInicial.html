@@ -14,29 +14,24 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<div class="panel-heading alert-success"
-									th:text="#{wallet.initial.fin}"></div>
-								<form role="form">
+								<div class="panel-heading alert-success" th:text="#{wallet.initial.fin}"></div>
+								<form role="form" th:object="${carteira}" method="POST" th:action="@{/carteira/saveWallet}">
 									<div class="col-lg-5">
 										<div class="row">
 											<div class="form-group col-lg-10">
 												<label id="label_data_ref" th:text="#{wallet.refDate}"></label>
 												<input id="input_data_ref" type="text" class="form-control"
-														th:placeholder="${#dates.format(carteira.dataRef,'dd/MMM/yyyy')}" />
+														th:placeholder="${#dates.format(carteira.dataRef?:'01-01-2000','dd/MMM/yyyy')}"
+														th:field="*{dataRef}"/>
 												<p class="help-block" th:text="#{wallet.refDate.descr}"></p>
 											</div>
-											<!-- <div class="form-group col-lg-8">
-												<label id="label_data_ref" th:text="#{wallet.lastUpdate}"></label>
-												<input id="input_data_ref" type="text" class="form-control"
-													th:value="${#dates.format(carteira.ultimaAtualizacao,'dd/MMM/yyyy')}" />
-
-											</div> -->
 										</div>
 										<div class="row">
 											<div class="form-group col-lg-10">
 												<label id="label_cred_irrf" th:text="#{wallet.irrf}"></label>
 												<input id="input_cred_irrf" class="form-control"
-														th:placeholder="${#numbers.formatDecimal((carteira.credIrrf), 1, 'POINT', 2, 'COMMA')}" />
+														th:placeholder="${#numbers.formatDecimal((carteira.credIrrf), 1, 'POINT', 2, 'COMMA')}"
+														th:field="*{credIrrf}"/>
 												<p class="help-block" th:text="#{wallet.irrf.descr}"></p>
 											</div>
 										</div>
@@ -45,6 +40,7 @@
 												<button id="btn_submit_form_1" type="submit" method="POST" class="btn btn-default" th:text="#{btn.save}"></button>
 												<button id="btn_reset_form_1" type="reset" class="btn btn-default" th:text="#{btn.clr}"></button>
 											</div>
+											<input id="userId" type="text" class="form-control" name="userId" th:placeholder="userId"/>
 										</div>
 									</div>
 									<div class="col-lg-6">
@@ -52,7 +48,8 @@
 											<div class="form-group col-lg-11">
 												<label id="label_prej_normal" th:text="#{wallet.prejNormal}"></label>
 												<input id="input_prej_normal" class="form-control"
-														th:placeholder="${#numbers.formatDecimal((carteira.prejNormal), 1, 'POINT', 2, 'COMMA')}" />
+														th:placeholder="#{placeholder.zeroes}"
+														th:field="*{prejNormal}" /> <!-- th:placeholder="${#numbers.formatDecimal(carteira.prejNormal, 1, 'POINT', 2, 'COMMA')}" -->
 												<p class="help-block" th:text="#{wallet.prejNormal.descr}"></p>
 											</div>
 										</div>
@@ -60,7 +57,8 @@
 											<div class="form-group col-lg-11">
 												<label id="label_prej_daytrade"	th:text="#{wallet.prejDaytrade}"></label>
 												<input id="input_prej_daytrade" class="form-control"
-														th:placeholder="${#numbers.formatDecimal((carteira.prejDaytrade), 1, 'POINT', 2, 'COMMA')}" />
+														th:placeholder="${#numbers.formatDecimal((carteira.prejDaytrade), 1, 'POINT', 2, 'COMMA')}"
+														th:field="*{prejDaytrade}"/>
 												<p class="help-block" th:text="#{wallet.prejDaytrade.descr}"></p>
 											</div>
 										</div>
@@ -68,7 +66,8 @@
 											<div class="form-group col-lg-11">
 												<label id="label_prej_fii" th:text="#{wallet.prejFii}"></label>
 												<input id="input_prej_fii" class="form-control"
-														th:placeholder="${#numbers.formatDecimal((carteira.prejFii), 1, 'POINT', 2, 'COMMA')}" />
+														th:placeholder="${#numbers.formatDecimal((carteira.prejFii), 1, 'POINT', 2, 'COMMA')}"
+														th:field="*{prejFii}"/>
 												<p class="help-block" th:text="#{wallet.prejFii.descr}"></p>
 											</div>
 										</div>
@@ -133,35 +132,42 @@
 											<!-- Fim da lista de ativos já inseridos -->
 
 											<!-- Linha em branco para inserção de novos Ativos -->
-											<form role="form">
+											<form role="form" th:object="${ativoCarteira}" method="POST" th:action="@{/carteira/saveAsset}">
 												<div class="form-group">
 													<tr class="odd gradeX">
-														<td class="center"><input class="form-control"
-															id="form_lista_quant" th:placeholder="#{placeholder.zero}" /></td>
+														<input type="hidden" id="ativoId" th:value="20" name="ativoId"/>
+														<input type="hidden" id="carteiraId" th:value="${carteira.id}" name="carteiraId"/>
+
+														<td class="center">
+															<input class="form-control"	id="form_lista_quant"
+																	th:field="*{quantidade}" th:placeholder="#{placeholder.zero}" />
+														</td>
 														<td class="center" id="form_lista_tipo">
-															<select	class="form-control">
-																	<option>Ação</option>
-																	<option>Opção</option>
-																	<option>FII</option>
-																	<option>Dólar</option>
-																	<option>Ouro</option>
-																	<option>Futuro</option>
+															<select	class="form-control" >										<!--  th:field="*{ativo.tipoAtivo}" -->
+																<div th:each="ta : ${tiposAtivo}">
+																	<option th:text="${ta.desc}" th:value="${ta.id}">-</option>
+																</div>
 															</select>
 														</td>
-														<td class="center"><input class="form-control"
-															id="form_lista_ticker" type="text" th:placeholder="#{asset.ticker}" />
+														<td class="center">
+															<input class="form-control"	id="form_lista_ticker" type="text"
+																	th:placeholder="#{asset.ticker}" />							<!-- th:field="*{ativo.ticker}" -->
 														</td>
-														<td class="center"><input class="form-control"
-															id="form_lista_vcto" type="date" th:placeholder="#{placeholder.dateStd}" />
+														<td class="center">
+															<input class="form-control" id="form_lista_vcto" type="date"
+																	th:placeholder="#{placeholder.dateStd}" disabled="true" />
 														</td>
-														<td class="center"><input class="form-control"
-															id="form_lista_pr_med" type="text" th:placeholder="#{placeholder.zeroes}" disabled="true" />
+														<input type="hidden" id="ativoId" th:value="20" name="ativoId"/>
+														<td class="center">
+															<input class="form-control" id="form_lista_pr_med" type="text"
+																	th:placeholder="#{placeholder.zeroes}" disabled="true" />
 														</td>
-														<td class="center"><input class="form-control"
-															id="form_lista_valor" type="text" th:placeholder="#{placeholder.zeroes}" /></td>
+														<td class="center">
+															<input class="form-control" id="form_lista_valor" type="text"
+																	th:placeholder="#{placeholder.zeroes}" th:field="*{valor}"/>
+														</td>
 														<td>
-															<button id="btn_adiciona_form_1" type="button"
-																class="btn btn-primary btn-circle">
+															<button id="btn_adiciona_form_1" type="submit" class="btn btn-primary btn-circle">
 																<i class="fa fa-plus"></i>
 															</button>
 														</td>
@@ -173,10 +179,6 @@
 
 										</tbody>
 									</table>
-
-									<button id="btn_submit_form_2" type="submit" class="btn btn-default" th:text="#{btn.save}"></button>
-									<button id="btn_reset_form_2" type="reset" class="btn btn-default" th:text="#{btn.clrAll}"></button>
-
 									<!-- /.table-responsive -->
 								</div>
 

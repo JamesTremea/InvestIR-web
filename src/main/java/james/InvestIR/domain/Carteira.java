@@ -1,5 +1,6 @@
 package james.InvestIR.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -24,14 +25,17 @@ public class Carteira {
 	private Date ultimaAtualizacao;
 	@OneToOne
 	private Usuario usuario;
-	@OneToMany(mappedBy = "ativo", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "carteira", fetch = FetchType.EAGER)
 	private List<AtivoCarteira> ativosCarteira;
 
 
 	public Carteira(){
-
+		this.ativosCarteira = new ArrayList<AtivoCarteira>();
 	}
 
+	public Carteira(ArrayList<AtivoCarteira> lac){
+		this.ativosCarteira = lac;
+	}
 
 	public long getId() {
 		return id;
@@ -105,4 +109,7 @@ public class Carteira {
 		this.ativosCarteira = ativosCarteira;
 	}
 
+	public void addAtivoCarteira(AtivoCarteira ativoCarteira) {
+		this.ativosCarteira.add(ativoCarteira);
+	}
 }

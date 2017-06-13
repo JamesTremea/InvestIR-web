@@ -184,7 +184,7 @@
                             /input-group
                         </li> -->
                         <li>
-                        	<a href="home.html">
+                        	<a href="#" th:href="@{/home}">
                         		<i class="fa fa-home fa-fw"></i>
                         		<span th:text="#{menu.start}"/>
                         	</a>
@@ -205,7 +205,7 @@
                -->
 
                         <li>
-                            <a href="#">
+                            <a href="#" th:href="@{/carteira/carteiraInicial}">
                             	<i class="fa fa-list-alt fa-fw"></i>
                             	<span th:text="#{menu.wallet}"></span>
                             	<span class="fa arrow"></span>
@@ -213,23 +213,23 @@
                             <ul class="nav nav-second-level">
 
                             	<li>
-                                    <a href="carteira.html" th:text="#{wallet.title}"></a>
+                                    <a href="#" th:href="@{/carteira/carteira}" th:text="#{wallet.title}"></a>
                                 </li>
                                 <li>
-                                    <a href="carteiraInicial.html" th:text="#{menu.wallet.start}"></a>
+                                    <a href="#" th:href="@{/carteira/carteiraInicial}" th:text="#{menu.wallet.start}"></a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="notas.html">
+                            <a href="#" th:href="@{/notas}">
                             	<i class="fa fa-file-text fa-fw"></i>
                             	<span th:text="#{menu.notes}"></span>
                             </a>
                         </li>
 
 						<li>
-                            <a href="mensagens.html">
+                            <a href="#" th:href="@{/mensagens}">
                             	<i class="fa fa-envelope-o fa-fw"></i>
                             	<span th:text="#{menu.messages}"></span>
                             </a>
@@ -310,7 +310,7 @@
 	        var selectedOption = $('#locales').val();
 	//        var url = window.location.href;
 	        if (selectedOption != ''){
-	            window.location.replace('carteira?lang=' + selectedOption);
+	            window.location.replace('/carteira/carteira?lang=' + selectedOption);
 	        }
 	    });
 	});

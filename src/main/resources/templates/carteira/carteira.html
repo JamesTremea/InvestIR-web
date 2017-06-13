@@ -107,9 +107,9 @@
 															<span th:text="*{#dates.format(ativo.vencimento,'dd/MMM/yyyy')}">-</span>
 														</div>
 													</td>
-													<td id="form_lista_pr_med" class="center"><span th:text="*{#numbers.formatDecimal((precoMedio), 1, 'POINT', 4, 'COMMA')}">-</span></td>
+													<td id="form_lista_pr_med" class="center"><span th:text="*{#numbers.formatDecimal((valor / quantidade), 1, 'POINT', 4, 'COMMA')}">-</span></td>
 													<td id="form_lista_valor" class="center">
-														<span th:text="*{#numbers.formatDecimal((precoMedio * quantidade), 1, 'POINT', 2, 'COMMA')}">-</span>
+														<span th:text="*{#numbers.formatDecimal((valor), 1, 'POINT', 2, 'COMMA')}">-</span>
 													</td>
 												</tr>
 												<!-- Fim da lista de ativos em carteira -->

@@ -1,35 +1,41 @@
 package james.InvestIR.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import james.InvestIR.domain.Ativo;
 import james.InvestIR.domain.AtivoCarteira;
 import james.InvestIR.domain.Carteira;
-import james.InvestIR.domain.TipoAtivo;
+import james.InvestIR.domain.Usuario;
 import james.InvestIR.service.CarteiraService;
 import james.InvestIR.service.TipoAtivoService;
+import james.InvestIR.service.UsuarioService;
 import james.InvestIR.util.DateUtil;
 import james.InvestIR.service.AtivoCarteiraService;
+import james.InvestIR.service.AtivoService;
 
 @Controller
+@RequestMapping("/carteira")
 public class CarteiraController {
 
 	private final CarteiraService carteiraService;
 	private final AtivoCarteiraService ativoCarteiraService;
 	private final TipoAtivoService tipoAtivoService;
+	private final AtivoService ativoService;
+	private final UsuarioService usuarioService;
 
-	public CarteiraController(CarteiraService carteiraService, AtivoCarteiraService ativoCarteiraService, TipoAtivoService tipoAtivoService){
+	public CarteiraController(CarteiraService carteiraService, AtivoCarteiraService ativoCarteiraService,
+				TipoAtivoService tipoAtivoService, AtivoService ativoService, UsuarioService usuarioService){
 		this.carteiraService = carteiraService;
 		this.ativoCarteiraService = ativoCarteiraService;
 		this.tipoAtivoService = tipoAtivoService;
+		this.ativoService = ativoService;
+		this.usuarioService = usuarioService;
 	}
 
 
@@ -48,34 +54,44 @@ public class CarteiraController {
 		Carteira cart = new Carteira();
 		cart.setDataRef(DateUtil.getToday());
 		cart = carteiraService.findOne(1L);
-		List<TipoAtivo> tiposAtivo = tipoAtivoService.getAll();
-		List<AtivoCarteira> ativosCarteira = new ArrayList<>();
+		if(cart.getDataRef()==null)
+			cart.setDataRef(DateUtil.parseStringToDate("01-01-2000"));
 		model.addAttribute("carteira", cart);
-		model.addAttribute(tiposAtivo);
-		model.addAttribute(ativosCarteira);
+		model.addAttribute("tiposAtivo", tipoAtivoService.getAll());
+		model.addAttribute("ativoCarteira", new AtivoCarteira());
 		return "/carteira/carteiraInicial";
 	}
 
 
 	@PostMapping("/saveWallet")
-	public String saveWallet(Model model, @Valid Carteira cart, BindingResult bindingResult){
+	public String saveWallet(Model model, @Valid Carteira cart, BindingResult bindingResult,
+			@RequestParam(value = "userId", required = true) Long userId){
+		Usuario us = usuarioService.findOne(userId);
+		cart.setUsuario(us);
 		Carteira carteira = carteiraService.save(cart);
 		model.addAttribute("carteira", carteira);
-		return "redirect:/carteira/carteira";
+		return "redirect:/carteira/carteiraInicial";
 	}
 
 
-	@PostMapping("/saveAssets")
-	public String saveAssets(Model model, @Valid List<AtivoCarteira> ac, BindingResult bindingResult,
-			@RequestParam(value = "walletId", required = true) Long walletId){
-		Carteira cart = carteiraService.findOne(walletId);
-		if (cart == null)
+	@PostMapping("/saveAsset")
+	public String saveAsset(@Valid AtivoCarteira ativoCarteira, BindingResult bindingResult, Model model,
+			@RequestParam(value = "carteiraId", required = true) Long carteiraId,
+			@RequestParam(value = "ativoId", required = true) Long ativoId){
+
+		Carteira cart = carteiraService.findOne(carteiraId);
+
+		if (cart == null){
 			cart = new Carteira();
-		cart.setAtivosCarteira(ac);
-		carteiraService.save(cart);
-		model.addAttribute("carteira", cart);
-		return "redirect:/carteira/carteira";
-	}
+			carteiraService.save(cart);
+		}
+		Ativo at = ativoService.findOne(ativoId);
+		ativoCarteira.setCarteira(cart);
+		ativoCarteira.setAtivo(at);
 
+		ativoCarteiraService.save(ativoCarteira);
+
+		return "redirect:/carteira/carteiraInicial";
+	}
 
 }
