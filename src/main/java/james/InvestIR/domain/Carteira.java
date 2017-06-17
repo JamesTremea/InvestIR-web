@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+/**
+ * created by james on 22/05/2017
+*/
 
 @Entity
 public class Carteira {
@@ -108,6 +111,7 @@ public class Carteira {
 	public void setAtivosCarteira(List<AtivoCarteira> ativosCarteira) {
 		this.ativosCarteira = ativosCarteira;
 	}
+
 
 	public void addAtivoCarteira(AtivoCarteira ativoCarteira) {
 		this.ativosCarteira.add(ativoCarteira);

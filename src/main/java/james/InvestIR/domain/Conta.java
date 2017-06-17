@@ -4,24 +4,25 @@ import javax.persistence.*;
 import java.util.Set;
 
 /**
- * Created by rodrigo on 2/21/17.
+ * Created by james on 14/06/17.
  */
+
 @Entity
-public class Account {
+public class Conta {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
 	private String username;
-	private String password;
-	private boolean active;
+	private String senha;
+	private boolean ativo;
 	@ManyToMany(fetch = FetchType.EAGER)
-	private Set<Role> roles;
-	@OneToOne(fetch = FetchType.EAGER)
+	private Set<Papel> papeis;
+	@OneToOne				//(fetch = FetchType.EAGER)
 	private Usuario usuario;
 
-	public Account() {
+	public Conta() {
 	}
 
 	public Long getId() {
@@ -40,28 +41,28 @@ public class Account {
 		this.username = username;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
-	public boolean isActive() {
-		return active;
+	public boolean isAtivo() {
+		return ativo;
 	}
 
-	public void setActive(boolean active) {
-		this.active = active;
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
-	public Set<Role> getRoles() {
-		return roles;
+	public Set<Papel> getPapeis() {
+		return papeis;
 	}
 
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
+	public void setPapeis(Set<Papel> papeis) {
+		this.papeis = papeis;
 	}
 
 	public Usuario getUsuario() {

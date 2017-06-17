@@ -1,16 +1,9 @@
 --USUARIO
 INSERT INTO investir.usuario(id, data_nasc, email, celular, nome, tipo_usuario) VALUES
-( 1, '1970-03-28', 'james@hotmail.com', 	'(51)99235-4186', 'James Mauricio Tremea', 		'ADMINISTRADOR'),
-( 2, '1990-12-26', 'fernando@yahoo.com.br',	'(51)99123-4567', 'Fernando B. Sturzbecher', 	'LIMITADO'),
-( 3, '1980-11-01', 'ricardo@gmail.com', 	'(51)99234-5678', 'José Ricardo Robaski', 		'PREMIUM'),
-( 4, '1960-05-31', 'antonio@gmail.com', 	'(51)99990-1234', 'Antônio Antonildo da Silva', 'PREMIUM');
-
-
---ROLE
-insert into investir.role(id, role) values
-(1, 'ROLE_ADMINISTRADOR'),
-(2, 'ROLE_LIMITADO'),
-(3, 'ROLE_PREMIUM');
+( 1, '1970-03-28', 'james@hotmail.com', 	'(51)99235-4186', 'James Mauricio Tremea', 		'PAPEL_ADMINISTRADOR'),
+( 2, '1960-05-31', 'antonio@gmail.com', 	'(51)99990-1234', 'Antônio Antonildo da Silva', 'PAPEL_PREMIUM'),
+( 3, '1990-12-26', 'fernando@yahoo.com.br',	'(51)99123-4567', 'Fernando B. Sturzbecher', 	'PAPEL_LIMITADO'),
+( 4, '1980-11-01', 'ricardo@gmail.com', 	'(51)99234-5678', 'José Ricardo Robaski', 		'PAPEL_PREMIUM');
 
 
 -- TIPO_ATIVO
@@ -82,24 +75,25 @@ INSERT INTO investir.ativo_nota(id, nota_id, ativo_id, operacao, quantidade, val
 
 
 
+--PAPEL
+INSERT INTO investir.papel(id, papel) VALUES
+(1, 'PAPEL_ADMINISTRADOR'),
+(2, 'PAPEL_LIMITADO'),
+(3, 'PAPEL_PREMIUM');
 
 
 --AUTHENTICATION
---INSERT into sed.account(id, username, password, active, employee_id) VALUES
---(1, 'user',            '$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', TRUE, 2273),
---(2, 'psico',           '$2a$10$MQsw3ipKnruWSYJnm0pLlO/vmyogQYbQkl8dPTPetCMffRwAgEr1.', TRUE, 10),
---(3, 'sandra.donner',   '$2a$10$t50c/7TKjPIcyYbeSjRnDefYqF8BcVVMAchJkzSzz87rEvlK/602G', TRUE, 2257),
---(5, 'priscila.verdum', '$2a$10$h1tOIBb9bQVDghLLn6FxLu7sDJvnQUHhbhy20c8enc95iWqTB2nvu', TRUE, 10124),
---(6, 'rodrigo.noll',    '$2a$10$h1tOIBb9bQVDghLLn6FxLu7sDJvnQUHhbhy20c8enc95iWqTB2nvu', TRUE, 2273);
+--INSERT INTO sed.conta(id, username, senha, ativo, usuario_id) VALUES
+--(1, 'admin',            '$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', TRUE, 1),
+--(2, 'user',   			'$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', TRUE, 2),
+--(3, 'fernando',        	'$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', TRUE, 3),
+--(4, 'ricardo',   		'$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', TRUE, 4);
 
-
-
--- USER_ROLES
---insert into sed.account_roles (account_id, roles_id) values
+-- usuario_papeis
+--INSERT INTO sed.usuario_papeis (conta_id, papel_id) VALUES
 --(1, 1),
---(1, 2),
+--(1, 3),
 --(2, 3),
---(3, 1),
---(5, 1),
---(6, 1);
+--(3, 2),
+--(4, 3);
 

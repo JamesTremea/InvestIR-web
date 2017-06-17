@@ -1,6 +1,5 @@
 package james.InvestIR.service;
 
-import james.InvestIR.domain.Ativo;
 import james.InvestIR.domain.Usuario;
 import james.InvestIR.repository.UsuarioRepository;
 
