@@ -2,12 +2,7 @@ package james.InvestIR.service;
 
 import james.InvestIR.domain.AtivoCarteira;
 import james.InvestIR.domain.Carteira;
-import james.InvestIR.domain.Usuario;
-import james.InvestIR.repository.AtivoCarteiraRepository;
 import james.InvestIR.repository.CarteiraRepository;
-
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,12 +12,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class CarteiraService {
 
-    private final AtivoService ativoService;
     private final CarteiraRepository carteiraRepository;
     private final AtivoCarteiraService ativoCarteiraService;
 
-    public CarteiraService(AtivoService ativoService, CarteiraRepository carteiraRepository, AtivoCarteiraService ativoCarteiraService) {
-        this.ativoService = ativoService;
+    public CarteiraService(CarteiraRepository carteiraRepository, AtivoCarteiraService ativoCarteiraService) {
         this.carteiraRepository = carteiraRepository;
         this.ativoCarteiraService = ativoCarteiraService;
     }
@@ -37,11 +30,7 @@ public class CarteiraService {
 
     public Carteira findOne(Long id){
     	Carteira cart = carteiraRepository.findOne(id);
-//    	List<AtivoCarteira> lac = ativoCarteiraService.findByCarteiraId(id);
-//    	if(lac.size() > 0)
-//    		cart.setAtivosCarteira(lac);
     	return cart;
-
     }
 
 }

@@ -44,17 +44,17 @@ public class CarteiraController {
 
 
 	@GetMapping("/carteira")
-	public String getWalletPage(Model model){
+	public String getPaginaCarteira(Model model){
 		Carteira cart = carteiraService.findOne(1L);
 		if (cart == null)
-			this.getStarterWalletPage(model);
+			this.getPaginaCarteiraInicial(model);
 		model.addAttribute("carteira", cart);
 		return "/carteira/carteira";
 	}
 
 
 	@GetMapping("/carteiraInicial")
-	public String getStarterWalletPage(Model model){
+	public String getPaginaCarteiraInicial(Model model){
 		Carteira cart = new Carteira();
 		cart.setDataRef(DateUtil.getToday());
 		cart = carteiraService.findOne(1L);
@@ -68,7 +68,7 @@ public class CarteiraController {
 
 
 	@PostMapping("/saveWallet")
-	public String saveWallet(Model model, @Valid Carteira cart, BindingResult bindingResult,
+	public String salvaCarteira(Model model, @Valid Carteira cart, BindingResult bindingResult,
 			@RequestParam(value = "userId", required = true) Long userId){
 		Usuario us = usuarioService.findOne(userId);
 		cart.setUsuario(us);
@@ -79,7 +79,7 @@ public class CarteiraController {
 
 
 	@PostMapping("/saveAsset")
-	public String saveAsset(@Valid AtivoCarteira ativoCarteira, BindingResult bindingResult, Model model,
+	public String salvaAtivoCarteira(@Valid AtivoCarteira ativoCarteira, BindingResult bindingResult, Model model,
 			@RequestParam(value = "carteiraId", required = true) Long carteiraId,
 			@RequestParam(value = "ativoId", required = true) Long ativoId){
 

@@ -2,6 +2,9 @@ package james.InvestIR.service;
 
 import james.InvestIR.domain.Ativo;
 import james.InvestIR.repository.AtivoRepository;
+
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,24 +21,16 @@ public class AtivoService {
     }
 
     public Ativo save(Ativo ativo) {
-    	Ativo at = new Ativo();
-//        student = (Student)personService.findOne(student.getId());
-//
-//        if (student.getHealthRegister() == null){
-//            hr.setStudent(student);
-//            hr = healthRegisterRepository.save(hr);
-//            student.setHealthRegister(hr);
-//        } else{
-//            student.getHealthRegister().setDescription(hr.getDescription());
-//        }
-//
-//        personService.save(student);
-    	return at;
+    	return ativoRepository.save(ativo);
     }
 
 
     public Ativo findOne(Long id){
     	return ativoRepository.findOne(id);
+    }
+
+    public List<Ativo> buscaPorTicker(String ticker){
+    	return ativoRepository.findByTickerContainingIgnoreCase(ticker);
     }
 
 }

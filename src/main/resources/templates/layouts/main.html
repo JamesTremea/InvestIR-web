@@ -41,12 +41,12 @@
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+<!--                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only" th:text="#{staticTop.toggleNav}"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
+                </button> -->
                 <a id="nome_usuario" class="navbar-brand" href="index.html">James M. Tremea</a>
             </div>
             <!-- /.navbar-header -->
@@ -61,7 +61,6 @@
 					</select>
 				</li>
 
-
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -75,40 +74,13 @@
                                         <em>04/05/2017</em>
                                     </span>
                                 </div>
-                                <div>Foi gerado o DARF do IRPF relativo às suas movimentações de Abril de 2017.<br/>
-                                     Acesse aqui o arquivo em anexo...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>DARF de Março/2017</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>02/04/2017</em>
-                                    </span>
-                                </div>
-                                <div>Foi gerado o DARF do IRPF relativo às suas movimentações de Março de 2017.<br/>
-                                     Acesse aqui o arquivo em anexo...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>e-Finance</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>30/03/2017</em>
-                                    </span>
-                                </div>
-                                <div>Prezado Cliente,<br/>
-                                     É pensando em você que a nossa equipe...</div>
+                                <div>Mensagem qualquer...</div>
                             </a>
                         </li>
                         <li class="divider"></li>
                         <li>
                             <a class="text-center" href="#">
-                                <strong>Ler todas as mensagens</strong>
+                                <strong><span th:text="#{staticTop.viewAllMessages}"/></strong>
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         </li>
@@ -132,17 +104,8 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-twitter fa-fw"></i> Nova Nota de Corretagem
-                                    <span class="pull-right text-muted small">Ontem</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
                             <a class="text-center" href="#">
-                                <strong>Ver todos os Alertas</strong>
+                                <strong ><span th:text="#{staticTop.viewAllAllerts}"/></strong>
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         </li>
@@ -155,12 +118,12 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil do Usuário</a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i><span th:text="#{staticTop.userProfile}"/></a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configurações</a>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i><span th:text="#{staticTop.configurations}"/></a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i><span th:text="#{staticTop.exit}"/></a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -205,11 +168,7 @@
                -->
 
                         <li>
-                            <a href="#" th:href="@{/carteira/carteiraInicial}">
-                            	<i class="fa fa-list-alt fa-fw"></i>
-                            	<span th:text="#{menu.wallet}"></span>
-                            	<span class="fa arrow"></span>
-                            </a>
+                            <a href="#" th:href="@{/carteira/carteiraInicial}"><i class="fa fa-list-alt fa-fw"></i><span th:text="#{menu.wallet}"></span><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
 
                             	<li>
@@ -222,10 +181,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#" th:href="@{/notas}">
-                            	<i class="fa fa-file-text fa-fw"></i>
-                            	<span th:text="#{menu.notes}"></span>
-                            </a>
+                            <a href="#" th:href="@{/notas}"><i class="fa fa-file-text fa-fw"></i><span th:text="#{menu.notes}"></span></a>
                         </li>
 
 						<li>
@@ -290,9 +246,9 @@
     <script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- Morris Charts JavaScript -->
-    <script src="../vendor/raphael/raphael.min.js"></script>
-    <script src="../vendor/morrisjs/morris.min.js"></script>
-    <script src="../data/morris-data.js"></script>
+   <!--  <script src="../vendor/raphael/raphael.min.js"></script> -->
+   <!--  <script src="../vendor/morrisjs/morris.min.js"></script>
+    <script src="../data/morris-data.js"></script> -->
 
     <!-- DataTables JavaScript -->
     <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>

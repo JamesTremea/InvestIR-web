@@ -1,11 +1,9 @@
 package james.InvestIR.domain;
 
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
 import javax.persistence.OneToOne;
 
 /**
@@ -13,8 +11,6 @@ import javax.persistence.OneToOne;
 */
 
 @Entity
-//@Inheritance
-//@DiscriminatorColumn(name = "TYPE")
 public class Usuario {
 
 	@Id

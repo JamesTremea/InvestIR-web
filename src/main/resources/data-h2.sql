@@ -83,17 +83,17 @@ INSERT INTO investir.papel(id, papel) VALUES
 
 
 --AUTHENTICATION
---INSERT INTO sed.conta(id, username, senha, ativo, usuario_id) VALUES
---(1, 'admin',            '$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', TRUE, 1),
---(2, 'user',   			'$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', TRUE, 2),
---(3, 'fernando',        	'$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', TRUE, 3),
---(4, 'ricardo',   		'$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', TRUE, 4);
+INSERT INTO investir.conta(id, username, senha, ativo, usuario_id) VALUES
+(1, 'admin',            '$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', TRUE, 1),
+(2, 'user',   			'$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', TRUE, 2),
+(3, 'fernando',        	'$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', TRUE, 3),
+(4, 'ricardo',   		'$2a$10$Qji2/icFWIGGQEAv8bbwNuKGrSZyiUUPqE/0SNO2M.BpU.NA6xPhW', TRUE, 4);
 
 -- usuario_papeis
---INSERT INTO sed.usuario_papeis (conta_id, papel_id) VALUES
---(1, 1),
---(1, 3),
---(2, 3),
---(3, 2),
---(4, 3);
+INSERT INTO investir.conta_papeis (conta_id, papeis_id) VALUES
+(1, 1),
+(1, 3),
+(2, 3),
+(3, 2),
+(4, 3);
 

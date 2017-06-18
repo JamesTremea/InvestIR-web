@@ -1,10 +1,7 @@
 package james.InvestIR.service;
 
 import james.InvestIR.domain.AtivoCarteira;
-import james.InvestIR.domain.Carteira;
-import james.InvestIR.domain.Usuario;
 import james.InvestIR.repository.AtivoCarteiraRepository;
-import james.InvestIR.repository.CarteiraRepository;
 import org.springframework.stereotype.Service;
 
 /**
@@ -26,7 +23,7 @@ public class AtivoCarteiraService {
        	return ativoCarteiraRepository.save(ativoCarteira);
     }
 
-    public AtivoCarteira registerPurchase(AtivoCarteira ativoCarteira ) {
+    public AtivoCarteira registraCompra(AtivoCarteira ativoCarteira ) {
     	AtivoCarteira ac = ativoCarteiraRepository.findOne(ativoCarteira.getId());
     	if (ac == null)
     		ac = new AtivoCarteira();
@@ -40,7 +37,7 @@ public class AtivoCarteiraService {
         return ac;
     }
 
-    public AtivoCarteira registerSale(AtivoCarteira ativoCarteira) {
+    public AtivoCarteira registraVenda(AtivoCarteira ativoCarteira) {
     	AtivoCarteira ac = ativoCarteiraRepository.findOne(ativoCarteira.getId());
     	if (ac == null){																		// venda a descoberto
     		ac = new AtivoCarteira();

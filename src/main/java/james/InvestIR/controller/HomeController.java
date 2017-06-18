@@ -7,15 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
 	@GetMapping("/home")
-	public String getHomePage(){
+	public String getPaginaInicial(){
 		return "/layouts/home";
 	}
-
-
-	@GetMapping("/notas")
-	public String getNotesPage(){
-		return "/notas/notas";
-	}
-
 
 }

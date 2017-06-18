@@ -1,7 +1,6 @@
 package james.InvestIR.domain;
 
 import javax.persistence.*;
-import java.util.Set;
 
 /**
  * Created by james on 14/06/17.
@@ -14,8 +13,8 @@ public class Papel {
 	@GeneratedValue
 	private int id;
 	private String papel;
-	@ManyToMany
-	private Set<Conta> contas;
+//	@ManyToMany
+//	private Set<Conta> contas;
 
 	public int getId() {
 		return id;
@@ -33,11 +32,11 @@ public class Papel {
 		this.papel = papel;
 	}
 
-	public Set<Conta> getContas() {
-		return contas;
-	}
-
-	public void setContas(Set<Conta> contas) {
-		this.contas = contas;
-	}
+//	public Set<Conta> getContas() {
+//		return contas;
+//	}
+//
+//	public void setContas(Set<Conta> contas) {
+//		this.contas = contas;
+//	}
 }

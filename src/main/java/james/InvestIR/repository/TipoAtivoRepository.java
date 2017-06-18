@@ -12,9 +12,9 @@ import james.InvestIR.domain.TipoAtivo;
 @Repository
 public interface TipoAtivoRepository extends JpaRepository<TipoAtivo, Integer> {
 
-	List<TipoAtivo> findAll();
+	public List<TipoAtivo> findAll();
 
 	List<TipoAtivo> findByDesc(String desc);
 
-	TipoAtivo findOneByDesc(String desc);
+	public TipoAtivo findOneByDesc(String desc);
 }

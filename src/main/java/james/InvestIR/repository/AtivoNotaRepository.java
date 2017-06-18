@@ -1,5 +1,7 @@
 package james.InvestIR.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import james.InvestIR.domain.AtivoNota;
@@ -10,5 +12,7 @@ import james.InvestIR.domain.AtivoNota;
 
 @Repository
 public interface AtivoNotaRepository extends JpaRepository<AtivoNota, Long> {
+
+	List<AtivoNota> findAllByNotaId(Long id);
 
 }

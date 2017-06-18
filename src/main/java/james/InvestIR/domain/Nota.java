@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -27,8 +26,8 @@ public class Nota {
 	private double emolumentos;
 	private double irrf;
 	private double taxas;
-	//@OneToMany															//(mappedBy = "ativo", fetch = FetchType.EAGER)
-	//private List<AtivoNota> ativosNota;
+	@OneToMany															//(mappedBy = "ativo", fetch = FetchType.EAGER)
+	private List<AtivoNota> ativosNota;
 
 	public Nota(){
 
@@ -106,12 +105,12 @@ public class Nota {
 		this.taxas = taxas;
 	}
 
-//	public List<AtivoNota> getAtivosNota() {
-//		return ativosNota;
-//	}
-//
-//	public void setAtivosNota(List<AtivoNota> ativosNota) {
-//		this.ativosNota = ativosNota;
-//	}
+	public List<AtivoNota> getAtivosNota() {
+		return ativosNota;
+	}
+
+	public void setAtivosNota(List<AtivoNota> ativosNota) {
+		this.ativosNota = ativosNota;
+	}
 
 }

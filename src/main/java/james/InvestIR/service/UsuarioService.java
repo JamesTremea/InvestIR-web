@@ -2,7 +2,6 @@ package james.InvestIR.service;
 
 import james.InvestIR.domain.Usuario;
 import james.InvestIR.repository.UsuarioRepository;
-
 import org.springframework.stereotype.Service;
 
 /**
