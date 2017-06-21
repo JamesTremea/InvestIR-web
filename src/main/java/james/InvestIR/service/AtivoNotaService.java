@@ -1,12 +1,8 @@
 package james.InvestIR.service;
 
-import james.InvestIR.domain.Ativo;
 import james.InvestIR.domain.AtivoNota;
 import james.InvestIR.repository.AtivoNotaRepository;
-import james.InvestIR.repository.AtivoRepository;
-
 import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 /**

@@ -1,5 +1,8 @@
 package james.InvestIR.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -97,5 +100,22 @@ public class CarteiraController {
 
 		return "redirect:/carteira/carteiraInicial";
 	}
+
+	@PostMapping("/removeAsset")
+	public String removeAtivoCarteira(@Valid AtivoCarteira ac, BindingResult bindingResult,Model model,
+			@RequestParam(value = "carteiraId", required = true) Long carteiraId,
+			@RequestParam(value = "ativoTicker", required = true) String ativoTicker){
+
+		Carteira cart = carteiraService.findOne(carteiraId);
+
+		List<Ativo> la = new ArrayList<>();
+		la = ativoService.buscaPorTicker(ativoTicker);
+		ac.setCarteira(cart);
+		ac.setAtivo(la.get(0));
+		ativoCarteiraService.delete(ac);
+
+		return "redirect:/carteira/carteiraInicial";
+	}
+
 
 }

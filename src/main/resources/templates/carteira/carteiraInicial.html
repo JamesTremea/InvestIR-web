@@ -103,30 +103,34 @@
 											</tr>
 										</thead>
 										<tbody>
-											<div th:each="ativoCarteira : ${carteira.ativosCarteira}">
-												<tr class="odd gradeX" th:object="${ativoCarteira}">
-													<td id="form_lista_quant" class="center"><span th:text="*{quantidade}">-</span></td>
-													<td id="form_lista_tipo" class="center"><span th:text="*{ativo.tipoAtivo.desc}">-</span></td>
-													<td id="form_lista_ticker" class="center"><span th:text="*{ativo.ticker}">-</span></td>
-													<td id="form_lista_vcto" class="center">
-														<div th:if="*{ativo.vencimento} != null">
-															<span th:text="*{#dates.format(ativo.vencimento,'dd/MMM/yyyy')}">-</span>
-														</div>
-													</td>
-													<td id="form_lista_pr_med" class="center">
-														<span th:text="*{#numbers.formatDecimal((valor / quantidade), 1, 'POINT', 4, 'COMMA')}">-</span>
-													</td>
-													<td id="form_lista_valor" class="center">
-														<span th:text="*{#numbers.formatDecimal((valor), 1, 'POINT', 2, 'COMMA')}">-</span>
-													</td>
-													<td id="head_lista_botao">
-														<button id="btn_submit_form_2" type="submit" class="btn btn-warning btn-circle">
-															<i class="fa fa-pencil"></i>
-														</button>
-														<button id="btn_reset_form_2" type="reset" class="btn btn-danger btn-circle">
-															<i class="fa fa-times"></i>
-														</button>
-													</td>
+											<div th:each="ac : ${carteira.ativosCarteira}">
+												<tr class="odd gradeX">
+													<form role="form" th:object="${ativoCarteira}" method="POST" th:action="@{/carteira/removeAsset}">
+														<input type="hidden" id="ativoTicker" th:value="${ac.ativo.ticker}" name="ativoTicker"/>
+														<input type="hidden" id="carteiraId" th:value="${carteira.id}" name="carteiraId"/>
+														<td id="form_lista_quant" class="center"><span th:text="${ac.quantidade}">-</span></td>
+														<td id="form_lista_tipo" class="center"><span th:text="${ac.ativo.tipoAtivo.desc}">-</span></td>
+														<td id="form_lista_ticker" class="center"><span th:text="${ac.ativo.ticker}">-</span></td>
+														<td id="form_lista_vcto" class="center">
+															<div th:if="${ac.ativo.vencimento} != null">
+																<span th:text="${#dates.format(ac.ativo.vencimento,'dd/MMM/yyyy')}">-</span>
+															</div>
+														</td>
+														<td id="form_lista_pr_med" class="center">
+															<span th:text="${#numbers.formatDecimal((ac.valor / ac.quantidade), 1, 'POINT', 4, 'COMMA')}">-</span>
+														</td>
+														<td id="form_lista_valor" class="center">
+															<span th:text="${#numbers.formatDecimal((ac.valor), 1, 'POINT', 2, 'COMMA')}">-</span>
+														</td>
+														<td id="head_lista_botao">
+								<!-- 							<button id="btn_submit_form_2" type="submit" class="btn btn-warning btn-circle">
+																<i class="fa fa-pencil"></i>
+															</button> -->
+															<button id="btn_reset_form_2" type="submit" class="btn btn-danger btn-circle">
+																<i class="fa fa-times"></i>
+															</button>
+														</td>
+													</form>
 												</tr>
 											</div>
 											<!-- Fim da lista de ativos já inseridos -->
@@ -157,7 +161,6 @@
 															<input class="form-control" id="form_lista_vcto" type="date"
 																	th:placeholder="#{placeholder.dateStd}" disabled="true" />
 														</td>
-														<input type="hidden" id="ativoId" th:value="20" name="ativoId"/>
 														<td class="center">
 															<input class="form-control" id="form_lista_pr_med" type="text"
 																	th:placeholder="#{placeholder.zeroes}" disabled="true" />

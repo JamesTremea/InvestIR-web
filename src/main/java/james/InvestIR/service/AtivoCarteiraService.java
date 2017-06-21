@@ -60,4 +60,9 @@ public class AtivoCarteiraService {
     	return ativoCarteiraRepository.findOne(id);
     }
 
+	public void delete(AtivoCarteira ac) {
+		AtivoCarteira ac2 = ativoCarteiraRepository.findByCarteiraIdAndAtivoId(ac.getCarteira().getId(),ac.getAtivo().getId());
+		ativoCarteiraRepository.delete(ac2);
+	}
+
 }

@@ -1,10 +1,12 @@
 package james.InvestIR.domain;
 
 import java.util.Date;
-
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
-import org.springframework.data.annotation.Id;
+/**
+ * Created by james on 18/06/17.
+ */
 
 @Entity
 public class Log {
@@ -12,7 +14,7 @@ public class Log {
 	@Id
 	private Long id;
 	private Date data;
-	private String log;
+	private String conteudo;
 
 	public Log() {
 	}
@@ -29,11 +31,11 @@ public class Log {
 	public void setData(Date data) {
 		this.data = data;
 	}
-	public String getLog() {
-		return log;
+	public String getConteudo() {
+		return conteudo;
 	}
-	public void setLog(String log) {
-		this.log = log;
+	public void setConteudo(String conteudo) {
+		this.conteudo = conteudo;
 	}
 
 }

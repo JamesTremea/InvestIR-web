@@ -12,6 +12,8 @@ import james.InvestIR.domain.AtivoCarteira;
 @Repository
 public interface AtivoCarteiraRepository extends JpaRepository<AtivoCarteira, Long> {
 
-	List<AtivoCarteira> findByCarteiraId(Long carteiraId);
+	public List<AtivoCarteira> findAllByCarteiraId(Long carteiraId);
+
+	public AtivoCarteira findByCarteiraIdAndAtivoId(Long carteiraId, Long ativoId);
 
 }
