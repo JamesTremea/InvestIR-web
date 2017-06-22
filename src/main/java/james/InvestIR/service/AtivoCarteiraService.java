@@ -20,7 +20,7 @@ public class AtivoCarteiraService {
         this.ativoCarteiraRepository = ativoCarteiraRepository;
     }
 
-    public AtivoCarteira save(AtivoCarteira ativoCarteira) throws Exception  {
+    public AtivoCarteira save(AtivoCarteira ativoCarteira) throws Exception {
        	if ((ativoCarteira.getValor()/ativoCarteira.getQuantidade()) <= 0){
     		// TODO - RNG024 - emitir alerta de preço médio inválido
     		throw new Exception("Preço médio do ativo em carteira não pode ser igual ou menor que R$ 0,00. Insira o valor correto.");

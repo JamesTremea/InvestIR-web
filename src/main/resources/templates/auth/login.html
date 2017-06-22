@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymleaf.org"
+	lang="pt">
 
 <head>
 
@@ -9,19 +11,19 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
 
-    <title><span th:text="#{title.app}"></span></title>
+    <title th:text="#{title.app}"></title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 
     <!-- MetisMenu CSS -->
-    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet"/>
+    <link href="/vendor/metisMenu/metisMenu.min.css" rel="stylesheet"/>
 
     <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet"/>
+    <link href="/dist/css/sb-admin-2.css" rel="stylesheet"/>
 
     <!-- Custom Fonts -->
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,17 +40,13 @@
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
-	                <!-- <span th:text="#{lang.change}"></span>:
-					<select id="locales">
-					    <option value=""></option>
-					    <option value="en" th:text="#{lang.en}"></option>
-					    <option value="pt" th:text="#{lang.pt}"></option>
-					</select> -->
+
                     <div class="panel-heading">
                         <h3 class="panel-title" th:text="#{login.title2}"></h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form">
+                 <!--        <form role="form"> -->
+                        <form role="form" name="f" th:action="@{/home}" method="post"> <!-- <form role="form" th:object="${carteira}" method="POST" th:action="@{/carteira/saveWallet}"> -->
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="E-mail" name="email" type="email"/>
@@ -82,20 +80,22 @@
     </div>
 
     <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="/vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="/dist/js/sb-admin-2.js"></script>
 
     <!-- Internacionalização -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript">
+	<script th:inline="javascript">
+
+      /*<![CDATA[*/
 	$(document).ready(function() {
 	    $("#locales").change(function () {
 	        var selectedOption = $('#locales').val();
@@ -104,6 +104,7 @@
 	        }
 	    });
 	});
+	   /*]]>*/
 	</script>
 
 </body>

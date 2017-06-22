@@ -26,6 +26,7 @@ public class CarteiraService {
         	try{
         		ativoCarteiraService.save(ac);
         	}catch (Exception e){
+        		
         		// TODO - executar tratamento para exibir mensagem de erro
         	}
         }
