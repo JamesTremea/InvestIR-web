@@ -96,7 +96,11 @@ public class CarteiraController {
 		ativoCarteira.setCarteira(cart);
 		ativoCarteira.setAtivo(at);
 
-		ativoCarteiraService.save(ativoCarteira);
+		try{
+			ativoCarteiraService.save(ativoCarteira);
+		}catch (Exception e){
+
+		}
 
 		return "redirect:/carteira/carteiraInicial";
 	}

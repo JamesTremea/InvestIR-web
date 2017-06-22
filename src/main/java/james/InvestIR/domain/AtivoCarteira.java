@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class AtivoCarteira {
@@ -59,6 +60,11 @@ public class AtivoCarteira {
 
 	public void setCarteira(Carteira carteira) {
 		this.carteira = carteira;
+	}
+
+	@Transient
+	public double getPrecoMedio(){
+		return valor/quantidade;
 	}
 
 }

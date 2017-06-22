@@ -1,6 +1,7 @@
 package james.InvestIR.service;
 
 import james.InvestIR.domain.AtivoCarteira;
+import james.InvestIR.domain.AtivosNota;
 import james.InvestIR.repository.AtivoCarteiraRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,19 +12,23 @@ import org.springframework.stereotype.Service;
 @Service
 public class AtivoCarteiraService {
 
-    private final AtivoService ativoService;
+//    private final AtivoService ativoService;
     private final AtivoCarteiraRepository ativoCarteiraRepository;
 
     public AtivoCarteiraService(AtivoService ativoService, AtivoCarteiraRepository ativoCarteiraRepository) {
-        this.ativoService = ativoService;
+ //       this.ativoService = ativoService;
         this.ativoCarteiraRepository = ativoCarteiraRepository;
     }
 
-    public AtivoCarteira save(AtivoCarteira ativoCarteira) {
+    public AtivoCarteira save(AtivoCarteira ativoCarteira) throws Exception  {
+       	if ((ativoCarteira.getValor()/ativoCarteira.getQuantidade()) <= 0){
+    		// TODO - RNG024 - emitir alerta de preço médio inválido
+    		throw new Exception("Preço médio do ativo em carteira não pode ser igual ou menor que R$ 0,00. Insira o valor correto.");
+    	}
        	return ativoCarteiraRepository.save(ativoCarteira);
     }
 
-    public AtivoCarteira registraCompra(AtivoCarteira ativoCarteira ) {
+    public AtivoCarteira registraCompra(AtivoCarteira ativoCarteira, AtivosNota ativoNota) throws Exception  {
     	AtivoCarteira ac = ativoCarteiraRepository.findOne(ativoCarteira.getId());
     	if (ac == null)
     		ac = new AtivoCarteira();
@@ -33,11 +38,17 @@ public class AtivoCarteiraService {
     	ac.setValor(val);
     	ac.setAtivo(ativoCarteira.getAtivo());
     	ac.setCarteira(ativoCarteira.getCarteira());
+
+       	if ((ac.getValor()/ac.getQuantidade()) <= 0){
+    		// TODO - RNG024 - emitir alerta de preço médio inválido
+    		throw new Exception("Preço médio do ativo em carteira não pode ser igual ou menor que R$ 0,00. Insira o valor correto.");
+    	}
+
        	ativoCarteiraRepository.save(ac);
         return ac;
     }
 
-    public AtivoCarteira registraVenda(AtivoCarteira ativoCarteira) {
+    public AtivoCarteira registraVenda(AtivoCarteira ativoCarteira){
     	AtivoCarteira ac = ativoCarteiraRepository.findOne(ativoCarteira.getId());
     	if (ac == null){																		// venda a descoberto
     		ac = new AtivoCarteira();
@@ -64,5 +75,7 @@ public class AtivoCarteiraService {
 		AtivoCarteira ac2 = ativoCarteiraRepository.findByCarteiraIdAndAtivoId(ac.getCarteira().getId(),ac.getAtivo().getId());
 		ativoCarteiraRepository.delete(ac2);
 	}
+
+
 
 }

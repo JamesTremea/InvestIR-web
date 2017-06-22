@@ -1,6 +1,6 @@
 package james.InvestIR.service;
 
-import james.InvestIR.domain.AtivoNota;
+import james.InvestIR.domain.AtivosNota;
 import james.InvestIR.domain.Nota;
 import james.InvestIR.repository.NotaRepository;
 
@@ -14,17 +14,17 @@ import org.springframework.stereotype.Service;
 public class NotaService {
 
 	private final NotaRepository notaRepository;
-    private final AtivoNotaService ativoNotaService;
+    private final AtivosNotaService ativoNotaService;
 
 
-    public NotaService(NotaRepository notaRepository, AtivoNotaService ativoNotaService) {
+    public NotaService(NotaRepository notaRepository, AtivosNotaService ativoNotaService) {
     	this.notaRepository = notaRepository;
     	this.ativoNotaService = ativoNotaService;
     }
 
     public void save(Nota nota) {
     	notaRepository.save(nota);
-    	for(AtivoNota an : nota.getAtivosNota()){
+    	for(AtivosNota an : nota.getAtivosNota()){
     		ativoNotaService.save(an);
     	}
     }

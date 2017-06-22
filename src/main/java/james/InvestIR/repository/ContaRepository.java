@@ -13,5 +13,8 @@ import james.InvestIR.domain.Conta;
 @Repository
 public interface ContaRepository extends JpaRepository<Conta, Long> {
 
-    Optional<Conta> findByUsername(String username);
+    public Optional<Conta> findByUsername(String username);
+
+	public Conta findByUsuarioId(Long id);
+
 }

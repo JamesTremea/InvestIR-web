@@ -19,7 +19,7 @@ public class Conta {
 	private boolean ativo;
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Set<Papel> papeis;
-	@OneToOne				//(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER)
 	private Usuario usuario;
 
 	public Conta() {
@@ -45,8 +45,12 @@ public class Conta {
 		return senha;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public boolean setSenha(String senha) {
+		if (this.validaSenha(senha)){
+			this.senha = senha;
+			return true;
+		}
+		return false;
 	}
 
 	public boolean isAtivo() {
@@ -71,5 +75,11 @@ public class Conta {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	@Transient
+	private boolean validaSenha(String senha){
+		// TODO - implementar RNG019
+		return true;
 	}
 }

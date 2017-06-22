@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 
 
 @Entity
-public class AtivoNota {
+public class AtivosNota {
 
 	@Id
 	@GeneratedValue
@@ -20,7 +20,7 @@ public class AtivoNota {
 	@ManyToOne
 	private Nota nota;
 
-	public AtivoNota(){
+	public AtivosNota(){
 
 	}
 

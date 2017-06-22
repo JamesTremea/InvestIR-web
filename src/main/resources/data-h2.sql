@@ -65,8 +65,8 @@ INSERT INTO investir.ativo_carteira(id, ativo_id, carteira_id, quantidade, valor
 ( 7,	11,	1,	3000,	1410.00);
 
 
--- ATIVO_NOTA
-INSERT INTO investir.ativo_nota(id, nota_id, ativo_id, operacao, quantidade, valor) VALUES
+-- ATIVOS_NOTA
+INSERT INTO investir.ativos_nota(id, nota_id, ativo_id, operacao, quantidade, valor) VALUES
 ( 1,	1,	1,	1,	100,	1200.00),
 ( 2,	1,	2,	2,	500,	6610.00),
 ( 3,	1,	4,	0,	200,	2910.00),

@@ -1,7 +1,7 @@
 package james.InvestIR.service;
 
-import james.InvestIR.domain.AtivoNota;
-import james.InvestIR.repository.AtivoNotaRepository;
+import james.InvestIR.domain.AtivosNota;
+import james.InvestIR.repository.AtivosNotaRepository;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -10,26 +10,26 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class AtivoNotaService {
+public class AtivosNotaService {
 
-	private final AtivoNotaRepository ativoNotaRepository;
+	private final AtivosNotaRepository ativoNotaRepository;
 	private final AtivoService ativoService;
 
-    public AtivoNotaService(AtivoNotaRepository ativoNotaRepository, AtivoService ativoService) {
+    public AtivosNotaService(AtivosNotaRepository ativoNotaRepository, AtivoService ativoService) {
          this.ativoNotaRepository = ativoNotaRepository;
          this.ativoService = ativoService;
 
     }
 
-    public AtivoNota save(AtivoNota ativoNota) {
+    public AtivosNota save(AtivosNota ativoNota) {
     	return ativoNotaRepository.save(ativoNota);
     }
 
-    public AtivoNota findOne(Long id){
+    public AtivosNota findOne(Long id){
     	return ativoNotaRepository.findOne(id);
     }
 
-    public List<AtivoNota> findAllByNotaId(Long id){
+    public List<AtivosNota> findAllByNotaId(Long id){
     	return ativoNotaRepository.findAllByNotaId(id);
     }
 

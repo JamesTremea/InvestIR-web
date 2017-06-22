@@ -27,7 +27,7 @@ public class Nota {
 	private double irrf;
 	private double taxas;
 	@OneToMany															//(mappedBy = "ativo", fetch = FetchType.EAGER)
-	private List<AtivoNota> ativosNota;
+	private List<AtivosNota> ativosNota;
 
 	public Nota(){
 
@@ -105,11 +105,11 @@ public class Nota {
 		this.taxas = taxas;
 	}
 
-	public List<AtivoNota> getAtivosNota() {
+	public List<AtivosNota> getAtivosNota() {
 		return ativosNota;
 	}
 
-	public void setAtivosNota(List<AtivoNota> ativosNota) {
+	public void setAtivosNota(List<AtivosNota> ativosNota) {
 		this.ativosNota = ativosNota;
 	}
 

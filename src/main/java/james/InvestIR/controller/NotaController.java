@@ -4,16 +4,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import james.InvestIR.domain.Nota;
-import james.InvestIR.service.AtivoNotaService;
+import james.InvestIR.service.AtivosNotaService;
 import james.InvestIR.service.NotaService;
 
 @Controller
 public class NotaController {
 
 	private final NotaService notaService;
-	private final AtivoNotaService ativoNotaService;
+	private final AtivosNotaService ativoNotaService;
 
-	private NotaController(NotaService notaService, AtivoNotaService ativoNotaService){
+	private NotaController(NotaService notaService, AtivosNotaService ativoNotaService){
 		this.notaService = notaService;
 		this.ativoNotaService = ativoNotaService;
 	}
