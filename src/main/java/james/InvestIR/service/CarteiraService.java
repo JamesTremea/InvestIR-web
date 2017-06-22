@@ -23,7 +23,11 @@ public class CarteiraService {
     public Carteira save(Carteira carteira) {
     	Carteira cart = carteiraRepository.save(carteira);
         for (AtivoCarteira ac : carteira.getAtivosCarteira()){
-        	ativoCarteiraService.save(ac);
+        	try{
+        		ativoCarteiraService.save(ac);
+        	}catch (Exception e){
+        		// TODO - executar tratamento para exibir mensagem de erro
+        	}
         }
         return cart;
     }
