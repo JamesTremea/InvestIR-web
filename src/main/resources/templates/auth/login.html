@@ -46,27 +46,21 @@
                     </div>
                     <div class="panel-body">
                  <!--        <form role="form"> -->
-                        <form role="form" name="f" th:action="@{/home}" method="post"> <!-- <form role="form" th:object="${carteira}" method="POST" th:action="@{/carteira/saveWallet}"> -->
+                        <form role="form" name="f" th:action="@{/home}" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email"/>
+                                    <input class="form-control" type="text" id="username"
+                                    	th:placeholder="#{login.user}" name="username" required="true" />
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value=""/>
+                                    <input class="form-control" name="password" type="password"
+                                    th:placeholder="#{login.password}" required="true" />
                                 </div>
-
-								<div>
-	                                <span th:text="#{lang.change}"></span>:
-									<select id="locales">
-									    <option value=""></option>
-									    <option value="en" th:text="#{lang.en}"></option>
-									    <option value="pt" th:text="#{lang.pt}"></option>
-									</select>
-								</div>
 
                                 <div class="checkbox">
                                     <label>
-                                        <input name="remember" type="checkbox" value="keepConn" th:text="#{login.keepConn}"></input>
+                                        <input name="remember" id="remember" type="checkbox"
+                                        	value="keepConn" th:text="#{login.keepConn}"></input>
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->

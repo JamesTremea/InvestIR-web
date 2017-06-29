@@ -1,7 +1,6 @@
 package james.InvestIR.config;
 
 import java.util.Locale;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
@@ -26,21 +25,21 @@ public class MVCConfig extends WebMvcConfigurerAdapter {
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(localeChangeInterceptor());
 	}
-	
+
 	@Bean
 	public LocaleResolver localeResolver() {
 	    SessionLocaleResolver slr = new SessionLocaleResolver();
 	    slr.setDefaultLocale(Locale.US);
 	    return slr;
 	}
-	
+
 	/**
 	 * Locale change interceptor.
 	 *
 	 * @return the locale change interceptor
 	 */
-	
-	
+
+
 	@Bean
 	public LocaleChangeInterceptor localeChangeInterceptor() {
 		LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
